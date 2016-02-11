@@ -1,16 +1,16 @@
 //client js
 console.log("test");
 var conductor = new BandJS();
-conductor.setTimeSignature(4,4);
+conductor.setTimeSignature(2,4);
 conductor.setTempo(120);
 var inst = conductor.createInstrument();
 var piano = conductor.createInstrument('sine');
 var guitar = conductor.createInstrument('triangle');
 var bass = conductor.createInstrument('sawtooth');
-
-
+inst = bass;
 inst.setVolume(100);
 conductor.setOnFinishedCallback(newBar);
+var started = false;
 function newBar(){
 
 }
@@ -18,16 +18,26 @@ var keysHeld = [0,0,0,0,0,0,0,0];
 setInterval(checkKeysDown, 1000*60/120/8  );
 
 function checkKeysDown(){
-for(var i=0;i<keysHeld.length;i++){
+for(var i=0;i<6;i++){
   if(keysHeld[i] !== 0){
     console.log(keysHeld);
     keysHeld[i]++;
+    key = true;
+    resetRest();
     //key = 0;
   }
+  if(started){
+  keysHeld[7]++;
+}
 }
 }
 
 document.addEventListener('keydown', function(event) {
+  if(keysHeld[7] >0){
+  //inst.rest(getLength(keysHeld[7]));
+  console.log("resting for " + keysHeld[7]);
+  resetRest();
+}
     switch(event.keyCode){
       case 90:
       if(keysHeld[0] === 0){
@@ -78,6 +88,9 @@ document.addEventListener('keydown', function(event) {
       player.loop(true);
 
     }
+    resetRest();
+
+
 
 });
 
@@ -147,8 +160,12 @@ document.addEventListener('keyup', function(event) {
     keysHeld[6] = 0;
     break;
 }
+resetRest();
+started = true;
 });
-
+function resetRest(){
+  keysHeld[7] = 0;
+}
 function getLength(len){
 if(len <= 1){
   return 'eighth';
