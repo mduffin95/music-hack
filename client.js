@@ -72,9 +72,38 @@ document.addEventListener('keyup', function(event) {
   switch(event.keyCode){
     case 90:
     console.log("C held for " + getLength(keysHeld[0]));
-
+    piano.note(getLength(keysHeld[0]), 'C4');
     keysHeld[0] = 0;
-    console.log("hi");
+    break;
+    case 88:
+    console.log("C held for " + getLength(keysHeld[0]));
+    piano.note(getLength(keysHeld[0]), 'C4');
+    keysHeld[0] = 0;
+    break;
+    case 67:
+    console.log("C held for " + getLength(keysHeld[0]));
+    piano.note(getLength(keysHeld[0]), 'C4');
+    keysHeld[0] = 0;
+    break;
+    case 86:
+    console.log("C held for " + getLength(keysHeld[0]));
+    piano.note(getLength(keysHeld[0]), 'C4');
+    keysHeld[0] = 0;
+    break;
+    case 66:
+    console.log("C held for " + getLength(keysHeld[0]));
+    piano.note(getLength(keysHeld[0]), 'C4');
+    keysHeld[0] = 0;
+    break;
+    case 78:
+    console.log("C held for " + getLength(keysHeld[0]));
+    piano.note(getLength(keysHeld[0]), 'C4');
+    keysHeld[0] = 0;
+    break;
+    case 77:
+    console.log("C held for " + getLength(keysHeld[0]));
+    piano.note(getLength(keysHeld[0]), 'C4');
+    keysHeld[0] = 0;
     break;
 }
 });
