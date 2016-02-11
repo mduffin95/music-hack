@@ -4,6 +4,7 @@ var conductor = new BandJS();
 conductor.setTimeSignature(4,4);
 conductor.setTempo(120);
 var inst = conductor.createInstrument();
+var piano = conductor.createInstrument('sine');
 var guitar = conductor.createInstrument('triangle');
 var bass = conductor.createInstrument('sawtooth');
 
@@ -91,6 +92,12 @@ function choose_guitar(){
     console.log("guitar chosen");
     inst = guitar;
 }
+
+function choose_piano(){
+    console.log("piano chosen");
+    inst = guitar;
+}
+
 
 function choose_bass(){
     console.log("bass chosen");
