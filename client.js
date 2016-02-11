@@ -7,8 +7,9 @@ var inst = conductor.createInstrument();
 var piano = conductor.createInstrument('sine');
 var guitar = conductor.createInstrument('triangle');
 var bass = conductor.createInstrument('sawtooth');
-inst = bass;
 inst.setVolume(100);
+bass.setVolume(50);
+guitar.setVolume(75);
 conductor.setOnFinishedCallback(newBar);
 var started = false;
 function newBar(){
