@@ -30,36 +30,42 @@ document.addEventListener('keydown', function(event) {
         console.log("C");
       }
       break;
-
-      /*
-      case 90:
-      console.log("C");
-      piano.note('quarter', 'C4');
-      break;
       case 88:
-      console.log("D");
-      piano.note('quarter', 'D4');
+      if(keysHeld[1] === 0){
+        keysHeld[1] = 1;
+        console.log("D");
+      }
       break;
       case 67:
-      console.log("E");
-      piano.note('quarter', 'E4');
+      if(keysHeld[2] === 0){
+        keysHeld[2] = 1;
+        console.log("E");
+      }
       break;
       case 86:
-      console.log("F");
-      piano.note('quarter', 'F4');
+      if(keysHeld[3] === 0){
+        keysHeld[3] = 1;
+        console.log("F");
+      }
       break;
       case 66:
-      console.log("G");
-      piano.note('quarter', 'G4');
+      if(keysHeld[4] === 0){
+        keysHeld[4] = 1;
+        console.log("G");
+      }
       break;
       case 78:
-      console.log("A");
-      piano.note('quarter', 'A4');
+      if(keysHeld[5] === 0){
+        keysHeld[5] = 1;
+        console.log("A");
+      }
       break;
       case 77:
-      console.log("B");
-      piano.note('quarter', 'B4');
-      break;*/
+      if(keysHeld[6] === 0){
+        keysHeld[6] = 1;
+        console.log("B");
+      }
+      break;
       case 13:
       console.log("enter");
       var player = conductor.finish();
@@ -76,40 +82,40 @@ document.addEventListener('keyup', function(event) {
     keysHeld[0] = 0;
     break;
     case 88:
-    console.log("C held for " + getLength(keysHeld[0]));
-    piano.note(getLength(keysHeld[0]), 'C4');
-    keysHeld[0] = 0;
+    console.log("C held for " + getLength(keysHeld[1]));
+    piano.note(getLength(keysHeld[1]), 'D4');
+    keysHeld[1] = 0;
     break;
     case 67:
-    console.log("C held for " + getLength(keysHeld[0]));
-    piano.note(getLength(keysHeld[0]), 'C4');
-    keysHeld[0] = 0;
+    console.log("C held for " + getLength(keysHeld[2]));
+    piano.note(getLength(keysHeld[2]), 'E4');
+    keysHeld[2] = 0;
     break;
     case 86:
-    console.log("C held for " + getLength(keysHeld[0]));
-    piano.note(getLength(keysHeld[0]), 'C4');
-    keysHeld[0] = 0;
+    console.log("C held for " + getLength(keysHeld[3]));
+    piano.note(getLength(keysHeld[3]), 'F4');
+    keysHeld[3] = 0;
     break;
     case 66:
-    console.log("C held for " + getLength(keysHeld[0]));
-    piano.note(getLength(keysHeld[0]), 'C4');
-    keysHeld[0] = 0;
+    console.log("C held for " + getLength(keysHeld[4]));
+    piano.note(getLength(keysHeld[4]), 'G4');
+    keysHeld[4] = 0;
     break;
     case 78:
-    console.log("C held for " + getLength(keysHeld[0]));
-    piano.note(getLength(keysHeld[0]), 'C4');
-    keysHeld[0] = 0;
+    console.log("C held for " + getLength(keysHeld[5]));
+    piano.note(getLength(keysHeld[5]), 'A4');
+    keysHeld[5] = 0;
     break;
     case 77:
-    console.log("C held for " + getLength(keysHeld[0]));
-    piano.note(getLength(keysHeld[0]), 'C4');
-    keysHeld[0] = 0;
+    console.log("C held for " + getLength(keysHeld[6]));
+    piano.note(getLength(keysHeld[6]), 'B4');
+    keysHeld[6] = 0;
     break;
 }
 });
 
 function getLength(len){
-if(len == 1){
+if(len <= 1){
   return 'eighth';
 }else if(len == 2){
   return 'quarter';
