@@ -117,9 +117,15 @@ function choose_bass(){
     inst = bass;
 }
 
+function stop(){
+    var player = conductor.finish();
+    player.stop(true);
+}
+
 function stop_player(){
     console.log("stop clicked");
     var player = conductor.finish();
+    player.pause();
 }
 
 document.addEventListener('keyup', function(event) {
