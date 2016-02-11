@@ -4,13 +4,34 @@ var conductor = new BandJS();
 conductor.setTimeSignature(4,4);
 conductor.setTempo(120);
 var piano = conductor.createInstrument();
+piano.setVolume(100);
 conductor.setOnFinishedCallback(newBar);
 function newBar(){
 
 }
+var keysHeld = [0,0,0,0,0,0,0,0];
+setInterval(checkKeysDown, 1000*60/120/8  );
+
+function checkKeysDown(){
+for(var i=0;i<keysHeld.length;i++){
+  if(keysHeld[i] !== 0){
+    console.log(keysHeld);
+    keysHeld[i]++;
+    //key = 0;
+  }
+}
+}
 
 document.addEventListener('keydown', function(event) {
     switch(event.keyCode){
+      case 90:
+      if(keysHeld[0] === 0){
+        keysHeld[0] = 1;
+        console.log("C");
+      }
+      break;
+
+      /*
       case 90:
       console.log("C");
       piano.note('quarter', 'C4');
@@ -38,12 +59,35 @@ document.addEventListener('keydown', function(event) {
       case 77:
       console.log("B");
       piano.note('quarter', 'B4');
-      break;
+      break;*/
       case 13:
       console.log("enter");
       var player = conductor.finish();
       player.play();
       player.loop(true);
-
     }
+
 });
+document.addEventListener('keyup', function(event) {
+  switch(event.keyCode){
+    case 90:
+    console.log("C held for " + getLength(keysHeld[0]));
+
+    keysHeld[0] = 0;
+    console.log("hi");
+    break;
+}
+});
+
+function getLength(len){
+if(len == 1){
+  return 'eighth';
+}else if(len == 2){
+  return 'quarter';
+}else if(len < 4){
+  return 'half';
+}else{
+  return 'whole';
+}
+
+}
