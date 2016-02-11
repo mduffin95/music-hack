@@ -20,12 +20,33 @@
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="./band.js"></script>
+    <!-- <script src="test_band.js"></script> -->
     <script>
+    var conductor = new BandJS();
+    conductor.setTimeSignature(4,4);
+    conductor.setTempo(120);
+    var piano = conductor.createInstrument();
+    piano.setVolume(100);
+    conductor.setOnFinishedCallback(newBar);
+    function newBar(){
+
+    }
+    piano.note('quarter', 'C4');
+    piano.note('quarter', 'D4');
+    piano.note('quarter', 'E4');
+    var player = conductor.finish();
+
       var socket = io();
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
+        player.play();
+        player.loop(true);
         return false;
+      });
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
       });
     </script>
   </body>

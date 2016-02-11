@@ -8,16 +8,24 @@ var piano = conductor.createInstrument('sine');
 var guitar = conductor.createInstrument('triangle');
 var bass = conductor.createInstrument('sawtooth');
 inst.setVolume(100);
-bass.setVolume(50);
-guitar.setVolume(75);
+piano.setVolume(100);
+bass.setVolume(100);
+guitar.setVolume(100);
 conductor.setOnFinishedCallback(newBar);
+
 var started = false;
 function newBar(){
 
 }
 var keysHeld = [0,0,0,0,0,0,0,0];
 setInterval(checkKeysDown, 1000*60/120/8  );
-
+function sing(){
+  var x = document.getElementById("lyrics");
+  var text = x.elements[0].value;
+  var msg = new SpeechSynthesisUtterance(text);
+  msg.volume = 1;
+      window.speechSynthesis.speak(msg);
+}
 function checkKeysDown(){
 for(var i=0;i<6;i++){
   if(keysHeld[i] !== 0){
