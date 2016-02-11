@@ -87,6 +87,16 @@ function loop_player(){
     player.loop(true);
 }
 
+function choose_guitar(){
+    console.log("guitar chosen");
+    inst = guitar;
+}
+
+function choose_bass(){
+    console.log("bass chosen");
+    inst = bass;
+}
+
 document.addEventListener('keyup', function(event) {
   switch(event.keyCode){
     case 90:
