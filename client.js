@@ -4,6 +4,7 @@ var conductor = new BandJS();
 conductor.setTimeSignature(2,4);
 conductor.setTempo(120);
 var inst = conductor.createInstrument();
+var piano = conductor.createInstrument('sine');
 var guitar = conductor.createInstrument('triangle');
 var bass = conductor.createInstrument('sawtooth');
 inst.setVolume(100);
@@ -106,9 +107,20 @@ function choose_guitar(){
     inst = guitar;
 }
 
+function choose_piano(){
+    console.log("piano chosen");
+    inst = guitar;
+}
+
+
 function choose_bass(){
     console.log("bass chosen");
     inst = bass;
+}
+
+function stop_player(){
+    console.log("stop clicked");
+    var player = conductor.finish();
 }
 
 document.addEventListener('keyup', function(event) {
