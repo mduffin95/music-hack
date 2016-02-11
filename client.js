@@ -79,6 +79,14 @@ document.addEventListener('keydown', function(event) {
     }
 
 });
+
+function loop_player(){
+    console.log("image click");
+    var player = conductor.finish();
+    player.play();
+    player.loop(true);
+}
+
 document.addEventListener('keyup', function(event) {
   switch(event.keyCode){
     case 90:
