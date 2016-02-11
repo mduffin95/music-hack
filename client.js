@@ -97,6 +97,11 @@ function choose_bass(){
     inst = bass;
 }
 
+function stop_player(){
+    console.log("stop clicked");
+    var player = conductor.finish();
+}
+
 document.addEventListener('keyup', function(event) {
   switch(event.keyCode){
     case 90:
