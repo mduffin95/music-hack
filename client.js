@@ -3,8 +3,12 @@ console.log("test");
 var conductor = new BandJS();
 conductor.setTimeSignature(4,4);
 conductor.setTempo(120);
-var piano = conductor.createInstrument();
-piano.setVolume(100);
+var inst = conductor.createInstrument();
+var guitar = conductor.createInstrument('triangle');
+var bass = conductor.createInstrument('sawtooth');
+
+
+inst.setVolume(100);
 conductor.setOnFinishedCallback(newBar);
 function newBar(){
 
@@ -71,6 +75,7 @@ document.addEventListener('keydown', function(event) {
       var player = conductor.finish();
       player.play();
       player.loop(true);
+
     }
 
 });
@@ -78,37 +83,37 @@ document.addEventListener('keyup', function(event) {
   switch(event.keyCode){
     case 90:
     console.log("C held for " + getLength(keysHeld[0]));
-    piano.note(getLength(keysHeld[0]), 'C4');
+    inst.note(getLength(keysHeld[0]), 'C4');
     keysHeld[0] = 0;
     break;
     case 88:
     console.log("C held for " + getLength(keysHeld[1]));
-    piano.note(getLength(keysHeld[1]), 'D4');
+    inst.note(getLength(keysHeld[1]), 'D4');
     keysHeld[1] = 0;
     break;
     case 67:
     console.log("C held for " + getLength(keysHeld[2]));
-    piano.note(getLength(keysHeld[2]), 'E4');
+    inst.note(getLength(keysHeld[2]), 'E4');
     keysHeld[2] = 0;
     break;
     case 86:
     console.log("C held for " + getLength(keysHeld[3]));
-    piano.note(getLength(keysHeld[3]), 'F4');
+    inst.note(getLength(keysHeld[3]), 'F4');
     keysHeld[3] = 0;
     break;
     case 66:
     console.log("C held for " + getLength(keysHeld[4]));
-    piano.note(getLength(keysHeld[4]), 'G4');
+    inst.note(getLength(keysHeld[4]), 'G4');
     keysHeld[4] = 0;
     break;
     case 78:
     console.log("C held for " + getLength(keysHeld[5]));
-    piano.note(getLength(keysHeld[5]), 'A4');
+    inst.note(getLength(keysHeld[5]), 'A4');
     keysHeld[5] = 0;
     break;
     case 77:
     console.log("C held for " + getLength(keysHeld[6]));
-    piano.note(getLength(keysHeld[6]), 'B4');
+    inst.note(getLength(keysHeld[6]), 'B4');
     keysHeld[6] = 0;
     break;
 }
